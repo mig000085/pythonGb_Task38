@@ -45,8 +45,8 @@ def print_data():
         print(*data_second)
         
 def modify_data():
-    with open("data_first_variant.csv", "r+", encoding="utf-8") as file:
-        data = file.readlines()
+    with open("data_first_variant.csv", "r+", encoding="utf-8") as f:
+        data = f.readlines()
         print("Доступные данные из файла 'data_first_variant.csv':")
         for i, line in enumerate(data):
             print(f"{i+1}. {line.strip()}")
@@ -54,14 +54,14 @@ def modify_data():
         if selection>0 and selection<= len(data):
             new_data = input("Введите новые данные: ")
             data[selection-1] = new_data + '\n'
-            file.seek(0)
-            file.writelines(data)
-            file.truncate()
+            f.seek(0)
+            f.writelines(data)
+            f.truncate()
         else:
             print("Некорретный номер данных.")
     print ()
-    with open("data_second_variant.csv", "r+", encoding="utf-8") as file:
-        data = file.readlines()
+    with open("data_second_variant.csv", "r+", encoding="utf-8") as f:
+        data = f.readlines()
         print("Доступные данные из файла 'data_second_variant.csv':")
         for i, line in enumerate(data):
             print(f"{i+1}. {line.strip()}")
@@ -69,33 +69,33 @@ def modify_data():
         if selection>0 and selection<= len(data):
             new_data = input("Введите новые данные: ")
             data[selection-1] = new_data + '\n'
-            file.seek(0)
-            file.writelines(data)
-            file.truncate()
+            f.seek(0)
+            f.writelines(data)
+            f.truncate()
         else:
             print("Некорретный номер данных.")
 
 def select_and_delete_data():
-        with open("data_first_variant.csv", "r", encoding="utf-8") as file:
-            data = file.readlines()
+        with open("data_first_variant.csv", "r", encoding="utf-8") as f:
+            data = f.readlines()
         print("Доступные данные из файла 'data_first_variant.csv' (введите 0 чтобы перейти к следующему файлу):")
         for i, line in enumerate(data):
             print(f"{i+1}. {line.strip()}")
         selection = int(input("Введите номер данных, которые нужно удалить: "))
-        with open("data_first_variant.csv", "w", encoding="utf-8") as file:
+        with open("data_first_variant.csv", "w", encoding="utf-8") as f:
             for i, line in enumerate(data):
                 if i+1 != selection:
-                    file.write(line)
+                    f.write(line)
                     
-        with open("data_second_variant.csv", "r", encoding="utf-8") as file:
-            data = file.readlines()
+        with open("data_second_variant.csv", "r", encoding="utf-8") as f:
+            data = f.readlines()
         print("Доступные данные из файла 'data_second_variant.csv' (введите 0 чтобы выйти):")
         for i, line in enumerate(data):
             print(f"{i+1}. {line.strip()}")
         selection = int(input("Введите номер данных, которые нужно удалить: "))
-        with open("data_second_variant.csv", "w", encoding="utf-8") as file:
+        with open("data_second_variant.csv", "w", encoding="utf-8") as f:
             for i, line in enumerate(data):
                 if i+1 != selection:
-                    file.write(line)
+                    f.write(line)
 
 
